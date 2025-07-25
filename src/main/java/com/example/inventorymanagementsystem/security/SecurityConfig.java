@@ -31,16 +31,16 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withUsername("user")
-                .password("user")
+        UserDetails staff = User.withUsername("staff")
+                .password("ROLE_STAFF")
 //                .roles("ROLE_USER")
                 .build();
 
         UserDetails admin = User.withUsername("admin")
-                .password("admin")
+                .password("ROLE_ADMIN")
 //                .roles("ROLE_ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(user, admin);
+        return new InMemoryUserDetailsManager(staff, admin);
     }
 }
