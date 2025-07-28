@@ -20,6 +20,8 @@ public class SupplierController {
     }
 
 
+    // this comment just for testing
+
     @GetMapping
     public List<Supplier> getAllSuppliers() {
        return supplierService.getAllSuppliers();
