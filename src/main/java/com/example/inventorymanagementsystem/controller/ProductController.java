@@ -1,10 +1,7 @@
 package com.example.inventorymanagementsystem.controller;
 
 import com.example.inventorymanagementsystem.model.Product;
-import com.example.inventorymanagementsystem.model.Supplier;
-import com.example.inventorymanagementsystem.repository.ProductRepository;
 import com.example.inventorymanagementsystem.service.ProductService;
-import com.example.inventorymanagementsystem.service.SupplierService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    private ProductService productService;
+    private final ProductService productService;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -46,6 +43,18 @@ public class ProductController {
         }
         Product p = productService.updateProduct(id, product);
         return ResponseEntity.ok().body(p);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable long id){
+        Optional<Product> existingProduct = productService.getProductById(id);
+
+        if(existingProduct.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        productService.deleteProduct(id);
+        return ResponseEntity.ok().body(existingProduct.get());
     }
 
     

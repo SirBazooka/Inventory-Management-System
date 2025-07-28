@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/supplier")
 public class SupplierController {
-    private SupplierService supplierService;
+    private final SupplierService supplierService;
 
     public SupplierController(SupplierService supplierService) {
         this.supplierService = supplierService;
@@ -53,7 +53,7 @@ public class SupplierController {
         Optional<Supplier> optionalSupplier = supplierService.getSupplierById(id);
 
         if(optionalSupplier.isEmpty()){
-            ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
         }
 
         supplierService.deleteSupplier(id);
