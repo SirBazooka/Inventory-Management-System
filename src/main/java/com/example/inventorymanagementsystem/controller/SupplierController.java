@@ -42,7 +42,7 @@ public class SupplierController {
     public ResponseEntity<Supplier> updateSupplier(@PathVariable long id, @Valid @RequestBody Supplier supplier) {
         Optional<Supplier> optionalSupplier = supplierService.getSupplierById(id);
         if (optionalSupplier.isEmpty()) {
-            ResponseEntity.notFound().build();
+           return ResponseEntity.notFound().build();
         }
         Supplier s = supplierService.updateSupplier(id,  supplier);
         return ResponseEntity.ok().body(s);
