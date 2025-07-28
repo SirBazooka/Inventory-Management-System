@@ -11,9 +11,9 @@ import java.util.Optional;
 
 @Service
 public class SupplierService {
-    @Autowired
     private final SupplierRepository supplierRepository;
 
+    @Autowired
     public SupplierService(SupplierRepository supplierRepository) {
         this.supplierRepository = supplierRepository;
     }

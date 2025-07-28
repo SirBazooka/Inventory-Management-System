@@ -102,7 +102,7 @@ public class ProductService {
     }
 
     public List<Product> getLowStockProducts() {
-        return productRepository.findAll().stream().filter(product -> product.getQuantity() < 5).collect(Collectors.toList());
+        return productRepository.findAll().stream().filter(product -> product.getQuantity() < product.getLowStockThreshold()).collect(Collectors.toList());
     }
 
     // Search and Filtering

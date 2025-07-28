@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // Disable CSRF for testing (optional)
                 .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.GET, "/product/low-stock").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/product/**").hasRole("STAFF")
                         .requestMatchers(HttpMethod.POST, "/product/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/product/**").hasRole("ADMIN")

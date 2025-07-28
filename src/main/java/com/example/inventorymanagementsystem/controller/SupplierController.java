@@ -3,6 +3,7 @@ package com.example.inventorymanagementsystem.controller;
 import com.example.inventorymanagementsystem.model.Supplier;
 import com.example.inventorymanagementsystem.service.SupplierService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class SupplierController {
     private final SupplierService supplierService;
 
+    @Autowired
     public SupplierController(SupplierService supplierService) {
         this.supplierService = supplierService;
     }
@@ -34,8 +36,8 @@ public class SupplierController {
 
     @PostMapping
     public ResponseEntity<Supplier> createSupplier(@Valid @RequestBody Supplier supplier) {
-       supplierService.createNewSupplier(supplier);
-       return ResponseEntity.status(HttpStatus.CREATED).body(supplier);
+       Supplier s = supplierService.createNewSupplier(supplier);
+       return ResponseEntity.status(HttpStatus.CREATED).body(s);
     }
 
     @PutMapping("/{id}")

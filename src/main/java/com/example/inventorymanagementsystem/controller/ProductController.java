@@ -5,6 +5,7 @@ import com.example.inventorymanagementsystem.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +32,8 @@ public class ProductController {
 
     @PostMapping()
     public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product){
-        productService.createNewProduct(product);
-        return ResponseEntity.status(HttpStatus.CREATED).body(product);
+        Product p = productService.createNewProduct(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(p);
     }
 
     @PutMapping("/{id}")
@@ -57,5 +58,9 @@ public class ProductController {
         return ResponseEntity.ok().body(existingProduct.get());
     }
 
+    @GetMapping("/low-stock")
+    public List<Product> getLowStockProducts() {
+        return productService.getLowStockProducts();
+    }
     
 }
