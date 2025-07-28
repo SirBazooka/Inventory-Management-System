@@ -12,4 +12,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> DuplicateSupplierExceptionHandler(DuplicateSupplierException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<String> ProductNotFoundException(ProductNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }

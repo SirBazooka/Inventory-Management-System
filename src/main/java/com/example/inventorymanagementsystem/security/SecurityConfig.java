@@ -31,16 +31,26 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
+        // only updates the stock/quantity
+        // cannot delete or manage
         UserDetails staff = User.withUsername("staff")
-                .password("ROLE_STAFF")
+                .password("staff")
 //                .roles("ROLE_USER")
                 .build();
 
+        // full acces to the data
         UserDetails admin = User.withUsername("admin")
-                .password("ROLE_ADMIN")
+                .password("admin")
 //                .roles("ROLE_ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(staff, admin);
+        // see the data
+        // cannot interact with it
+        UserDetails user = User.withUsername("user")
+                .password("user")
+//                .roles("ROLE_USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(staff, admin, user);
     }
 }
