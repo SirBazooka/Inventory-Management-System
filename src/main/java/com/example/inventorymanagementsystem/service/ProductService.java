@@ -1,5 +1,6 @@
 package com.example.inventorymanagementsystem.service;
 
+import com.example.inventorymanagementsystem.exception.DuplicateProductException;
 import com.example.inventorymanagementsystem.exception.ProductNotFoundException;
 import com.example.inventorymanagementsystem.model.Product;
 import com.example.inventorymanagementsystem.model.Supplier;
@@ -23,10 +24,10 @@ public class ProductService {
 
     // CRUD Operations
     public Product createNewProduct(Product product) {
-        Optional<Product> newProduct = productRepository.findById(product.getId());
+        Optional<Product> newProduct = productRepository.getByNameAndSupplier_Id(product.getName(), product.getSupplier().getId());
 
         if (newProduct.isPresent()) {
-            throw new IllegalStateException("Product with name " + product.getName() + " already exists. Use updateProduct() for these purposes.");
+            throw new DuplicateProductException("Product with name " + product.getName() + " already exists. Use updateProduct() for these purposes.");
         }
 
         return productRepository.save(product);
