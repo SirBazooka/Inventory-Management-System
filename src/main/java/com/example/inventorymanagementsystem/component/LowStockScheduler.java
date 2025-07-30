@@ -16,7 +16,7 @@ public class LowStockScheduler {
         this.productService = productService;
     }
 
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "0 */5 * * * *")
     public void scheduledLowStock() {
         List<Product> products =  productService.getLowStockProducts();
         if(products != null) {
