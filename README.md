@@ -49,8 +49,8 @@ A comprehensive Spring Boot application for managing product inventory and suppl
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repository-url>
-   cd InventoryManagementSystem
+   git clone https://github.com/SirBazooka/Inventory-Management-System
+   cd Inventory-Management-System
    ```
 
 2. **Build the project**
