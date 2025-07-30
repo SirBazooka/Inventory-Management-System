@@ -1,8 +1,8 @@
-# 📦 Inventory Management System
+# Inventory Management System
 
 A comprehensive Spring Boot application for managing product inventory and suppliers with a modern web interface and RESTful API.
 
-## 🚀 Technologies Used
+## Technologies Used
 
 - **Java 21+** - Core programming language
 - **Spring Boot 6.x** - Application framework
@@ -15,7 +15,7 @@ A comprehensive Spring Boot application for managing product inventory and suppl
 - **Bean Validation** - Input validation
 - **Spring Scheduling** - Automated tasks
 
-## 🏗️ Architecture & Features
+## Architecture & Features
 
 ### Core Features
 - **Product Management**: CRUD operations for products with stock tracking
@@ -68,7 +68,7 @@ A comprehensive Spring Boot application for managing product inventory and suppl
    - H2 Database Console: `http://localhost:8080/h2-console`
    - API Base URL: `http://localhost:8080/product` or `http://localhost:8080/supplier`
 
-## 🖥️ Usage Guide
+## Usage Guide
 
 ### Web Interface
 
@@ -145,7 +145,7 @@ Authorization: Basic YWRtaW46YWRtaW4=
 }
 ```
 
-## 🗄️ Database Configuration
+## Database Configuration
 
 The application uses H2 in-memory database with file persistence:
 
@@ -161,7 +161,7 @@ spring.h2.console.path=/h2-console
 - Username: `sa`
 - Password: (leave empty)
 
-## 🔄 Automated Features
+## Automated Features
 
 ### Low Stock Scheduler
 - Runs every 5 minutes
@@ -169,7 +169,7 @@ spring.h2.console.path=/h2-console
 - Logs alerts to console
 - Location: [`LowStockScheduler.java`](src/main/java/com/example/inventorymanagementsystem/component/LowStockScheduler.java)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -189,14 +189,14 @@ src/
 └── test/                       # Test classes
 ```
 
-## 🔐 Security Features
+## Security Features
 
 - **Password Encryption**: BCrypt password encoding
 - **Role-based Authorization**: Method-level security
 - **CSRF Protection**: Configured for API usage
 - **HTTP Security**: Secured endpoints with proper authentication
 
-## 🚨 Exception Handling
+## Exception Handling
 
 Global exception handling with custom exceptions:
 - `ProductNotFoundException`
@@ -204,7 +204,7 @@ Global exception handling with custom exceptions:
 - `DuplicateProductException`
 - `DuplicateSupplierException`
 
-## 📈 Future Enhancements
+## Future Enhancements
 
 - [ ] Add Unit Tests
 - [ ] Add pagination for large datasets
