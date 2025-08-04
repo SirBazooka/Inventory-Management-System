@@ -38,7 +38,7 @@ A comprehensive Spring Boot application for managing product inventory and suppl
 - **Supplier**: Name, email, phone contact information
 - **Many-to-One Relationship**: Products linked to suppliers
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 - Java 21 or higher
